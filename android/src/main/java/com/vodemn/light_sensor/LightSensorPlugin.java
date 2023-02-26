@@ -81,7 +81,15 @@ public class LightSensorPlugin implements FlutterPlugin, EventChannel.StreamHand
   public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
     if (call.method.equals("sensor")) {
         result.success(sensor != null);
-    } else {
+    }
+    if (call.method.equale("getMaximumRange"){
+        if(sensor!=null){
+            result.success((int) sensor.getMaximumRange());
+        }else{
+            result.error("sensorIsNull", "Light Sensor is NULL", null);
+        }
+      }
+    else {
         result.notImplemented();
     }
   }

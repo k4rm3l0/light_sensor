@@ -8,6 +8,10 @@ class LightSensor {
     return const MethodChannel('system_feature').invokeMethod<bool?>('sensor');
   }
 
+  static Future<int?> get getMaxValue {
+    return const MethodChannel('system_feature').invokeMethod<int?>('getMaximumRange');
+  }
+
   /// Getter for light stream, throws an exception if device isn't on Android platform
   static Stream<int> get lightSensorStream {
     if (Platform.isAndroid) {
